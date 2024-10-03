@@ -53,7 +53,22 @@ export default {
   				'4': 'hsl(var(--chart-4))',
   				'5': 'hsl(var(--chart-5))'
   			}
-  		}
+  		},
+		keyframes: {
+			'slide-up': {
+				'0%': { opacity: 0, transform: 'translateY(20px)' },
+				'100%': { opacity: 1, transform: 'translateY(0)' },
+			},
+			'bounce': {
+				'0%': { transform: 'translateY(0)' },
+				'50%': { transform: 'translateY(-5px)' },
+				'100%': { transform: 'translateY(0)' },
+			}
+		},
+		animation: {
+			'slide-up': 'slide-up 0.3s ease-out',
+			'bounce': 'bounce 1s infinite',
+		}
   	}
   },
   plugins: [require("tailwindcss-animate")],

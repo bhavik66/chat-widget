@@ -1,12 +1,14 @@
-import { Button } from '@/components/ui/button';
+import ChatWidget from './components/ChatWidget';
 
-function App() {
+export default function AppWithChat() {
   return (
     <div>
-      <h1 className="text-3xl font-bold underline">Hello world!</h1>
-      <Button className="mt-4">Click Here</Button>
+      {/* Your main application content goes here */}
+      <h1>Welcome to My App</h1>
+      <p>This is the main content of the application.</p>
+
+      {/* Chat widget */}
+      <ChatWidget />
     </div>
   );
 }
-
-export default App;

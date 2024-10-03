@@ -7,7 +7,7 @@ export interface TextareaProps
 }
 
 const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
-  ({ className, maxRows = 10, rows = 1, ...props }, ref) => {
+  ({ className, maxRows = 10, rows = 1, value, ...props }, ref) => {
     const textareaRef = React.useRef<HTMLTextAreaElement | null>(null);
 
     const adjustHeight = React.useCallback(() => {
@@ -40,7 +40,8 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
         maxHeight,
       );
       textarea.style.height = `${newHeight}px`;
-    }, [maxRows, rows]);
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [maxRows, rows, value]);
 
     React.useEffect(() => {
       const textarea = textareaRef.current;
@@ -68,6 +69,7 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
           }
         }}
         rows={rows}
+        value={value}
         {...props}
       />
     );
