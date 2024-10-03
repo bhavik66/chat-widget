@@ -48,7 +48,7 @@ const Message: React.FC<MessageProps> = ({
 
   return (
     <div
-      className={`flex items-start space-x-2 my-4 ${isAI ? '' : 'justify-end'}`}
+      className={`flex items-start space-x-2 my-2 ${isAI ? '' : 'justify-end'}`}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
