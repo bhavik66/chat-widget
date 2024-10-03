@@ -72,7 +72,7 @@ export default {
 		animation: {
 			'slide-up': 'slide-up 0.3s ease-out',
 			'bounce': 'bounce 1s infinite',
-			'scale-up': 'scale-up 0.5s ease-out',
+			'scale-up': 'scale-up 0.3s ease-out',
 		}
   	}
   },
