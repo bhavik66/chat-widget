@@ -1,10 +1,10 @@
 import { useReducer, useEffect, useState } from 'react';
 import {
-  sendMessage,
   getMessages,
   updateMessage,
   deleteMessage,
 } from '@/services/apiService';
+import { webSocketService } from '@/services/wsService';
 
 interface MessageType {
   id: string;
@@ -70,6 +70,7 @@ interface UseMessagesReturn {
   editMessage: (id: string, content: string) => Promise<void>;
   removeMessage: (id: string) => Promise<void>;
   loadMoreMessages: () => Promise<void>;
+  isAiTyping: boolean;
 }
 
 const useMessages = (
@@ -84,6 +85,7 @@ const useMessages = (
   const [size, setSize] = useState<number>(initialSize);
   const [total, setTotal] = useState<number>(0);
   const [hasMore, setHasMore] = useState<boolean>(true);
+  const [isAiTyping, setIsAiTyping] = useState<boolean>(false);
 
   // Fetch messages function
   const fetchMessages = async (currentPage: number) => {
@@ -121,6 +123,26 @@ const useMessages = (
     }
   };
 
+  const initWebSocket = () => {
+    if (!conversationId) return;
+    webSocketService.connect(conversationId);
+    webSocketService.joinConversation(conversationId);
+    webSocketService.onIncomingMessage((message) => {
+      // Handle incoming message
+      dispatchMessages({ type: 'ADD_MESSAGE', payload: message });
+      setTotal((prevTotal) => prevTotal + 1);
+    });
+    webSocketService.onTyping((event) => {
+      setIsAiTyping(event.isTyping);
+    });
+  };
+
+  const cleanWebSocket = () => {
+    if (!conversationId) return;
+    webSocketService.leaveConversation();
+    webSocketService.disconnect();
+  };
+
   // Initialize messages on conversationId change
   useEffect(() => {
     if (conversationId) {
@@ -132,7 +154,13 @@ const useMessages = (
       setHasMore(true);
       fetchMessages(initialPage);
       setPage((prevPage) => prevPage + 1);
+      initWebSocket();
     }
+
+    return () => {
+      cleanWebSocket();
+    };
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [conversationId]);
 
@@ -149,9 +177,10 @@ const useMessages = (
     setIsLoading(true);
     setError(null);
     try {
-      const userMsg = await sendMessage(conversationId, 'user', content);
-      dispatchMessages({ type: 'ADD_MESSAGE', payload: userMsg });
-      setTotal((prevTotal) => prevTotal + 1);
+      // const userMsg = await sendMessage(conversationId, 'user', content);
+      // dispatchMessages({ type: 'ADD_MESSAGE', payload: userMsg });
+      // setTotal((prevTotal) => prevTotal + 1);
+      webSocketService.sendMessage(content);
     } catch (err) {
       console.error('Error sending user message:', err);
       setError('Failed to send message.');
@@ -205,6 +234,7 @@ const useMessages = (
     editMessage,
     removeMessage,
     loadMoreMessages,
+    isAiTyping,
   };
 };
 

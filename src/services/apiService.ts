@@ -24,7 +24,7 @@ export const createConversation = async (userId: string) => {
 
 export const getConversation = async (conversationId: string) => {
   try {
-    const response = await apiClient.get(`/conversations/${conversationId}/`);
+    const response = await apiClient.get(`/conversations/${conversationId}`);
     return response.data;
   } catch (error) {
     console.error('Error fetching conversation:', error);

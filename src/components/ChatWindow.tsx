@@ -52,6 +52,7 @@ const ChatWindow: React.FC<ChatWindowProps> = ({
     removeMessage,
     loadMoreMessages,
     hasMore,
+    isAiTyping,
   } = useMessages(conversationId);
 
   // Function to check if the screen is mobile-sized
@@ -172,6 +173,20 @@ const ChatWindow: React.FC<ChatWindowProps> = ({
           inverse={true}
           className="flex flex-col-reverse overflow-visible"
         >
+          {isAiTyping && (
+            <div>
+              <Message
+                id={'ai-typing'}
+                sender={'ai'}
+                content={''}
+                avatar={''}
+                actions={[]}
+                onEdit={() => {}}
+                onDelete={() => {}}
+                isTyping
+              />
+            </div>
+          )}
           {messages.map((msg) => (
             <div key={msg.id}>
               <Message
