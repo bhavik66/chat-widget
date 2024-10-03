@@ -5,14 +5,7 @@ import {
   deleteMessage,
 } from '@/services/apiService';
 import { webSocketService } from '@/services/wsService';
-
-interface MessageType {
-  id: string;
-  sender: 'ai' | 'user';
-  content: string;
-  avatar: string;
-  actions?: string[];
-}
+import { MessageType } from '@/types/chat';
 
 interface ApiResponse {
   messages: MessageType[];

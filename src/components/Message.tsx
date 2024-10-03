@@ -2,13 +2,9 @@ import React, { useState } from 'react';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
 import { Edit, Trash2 } from 'lucide-react';
+import { MessageType } from '@/types/chat';
 
-interface MessageProps {
-  id: string;
-  sender: 'ai' | 'user';
-  content: string;
-  avatar: string;
-  actions?: string[];
+interface MessageProps extends MessageType {
   isTyping?: boolean;
   onEdit: (id: string, content: string) => void;
   onDelete: (id: string) => void;
@@ -98,9 +94,9 @@ const Message: React.FC<MessageProps> = ({
             )}
           </div>
         </div>
-        {actions && actions.length > 0 && !isTyping && (
+        {actions && Object.keys(actions).length > 0 && !isTyping && (
           <div className="flex flex-col items-start space-y-2">
-            {actions.map((action, index) => (
+            {Object.values(actions).map((action, index) => (
               <Button
                 key={index}
                 variant="outline"

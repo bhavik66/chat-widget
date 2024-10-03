@@ -1,9 +1,9 @@
 // src/types/chat.ts
 
-export interface Message {
+export interface MessageType {
   id: string;
-  sender: 'user' | 'support';
-  text: string;
-  timestamp: Date;
-  avatarUrl?: string; // Optional avatar URL
+  sender: 'ai' | 'user';
+  content: string;
+  avatar: string;
+  actions?: Record<string, string>;
 }
