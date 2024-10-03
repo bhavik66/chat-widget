@@ -14,7 +14,7 @@ const ChatBubble: React.FC<ChatBubbleProps> = ({
 }) => {
   return (
     <Button
-      className={`fixed bottom-4 ${position === 'left' ? 'left-4' : 'right-4'} rounded-full w-14 h-14 shadow-lg`}
+      className={`fixed bottom-4 ${position === 'left' ? 'left-4' : 'right-4'} rounded-full w-14 h-14 shadow-lg animate-scale-up`}
       onClick={onClick}
     >
       {isOpen ? (
