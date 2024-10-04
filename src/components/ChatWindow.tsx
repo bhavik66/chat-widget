@@ -123,11 +123,22 @@ const ChatWindow: React.FC<ChatWindowProps> = ({
       {/* Header */}
       <div className="flex justify-between items-center p-3 pb-0">
         <div className="flex items-center space-x-2">
-          <Button variant="ghost" size="icon" onClick={toggleFullscreen}>
+          <Button
+            variant="ghost"
+            size="icon"
+            onClick={toggleFullscreen}
+            data-testid="button-fullscreen"
+          >
             {isFullscreen ? (
-              <Minimize2 className="h-5 w-5 text-gray-600" />
+              <Minimize2
+                className="h-5 w-5 text-gray-600"
+                data-testid="button-minimize"
+              />
             ) : (
-              <Maximize2 className="h-5 w-5 text-gray-600" />
+              <Maximize2
+                className="h-5 w-5 text-gray-600"
+                data-testid="button-maximize"
+              />
             )}
             <span className="sr-only">
               {isFullscreen ? 'Exit fullscreen' : 'Enter fullscreen'}
@@ -139,6 +150,7 @@ const ChatWindow: React.FC<ChatWindowProps> = ({
             onClick={() =>
               onChangePosition(position === 'right' ? 'left' : 'right')
             }
+            data-testid="button-change-position"
           >
             {position === 'right' ? (
               <PanelLeft className="h-5 w-5 text-gray-600" />
@@ -147,7 +159,12 @@ const ChatWindow: React.FC<ChatWindowProps> = ({
             )}
           </Button>
         </div>
-        <Button variant="ghost" size="icon" onClick={onCloseWindow}>
+        <Button
+          variant="ghost"
+          size="icon"
+          onClick={onCloseWindow}
+          data-testid="button-close"
+        >
           <X className="h-5 w-5 text-gray-600" />
           <span className="sr-only">Close chat</span>
         </Button>
@@ -271,7 +288,12 @@ const ChatWindow: React.FC<ChatWindowProps> = ({
           </Select>
         </div>
         <div className="flex space-x-2">
-          <Button variant="ghost" size="icon" className="h-8 w-8">
+          <Button
+            variant="ghost"
+            size="icon"
+            className="h-8 w-8"
+            data-testid="button-settings"
+          >
             <Settings className="h-5 w-5 text-gray-500" />
             <span className="sr-only">Settings</span>
           </Button>
@@ -281,6 +303,7 @@ const ChatWindow: React.FC<ChatWindowProps> = ({
             className="h-8 w-8"
             onClick={handleSendMessage}
             disabled={!newMessage.trim()}
+            data-testid="button-send"
           >
             <SendHorizontal className="h-5 w-5 text-gray-500" />
             <span className="sr-only">Send</span>

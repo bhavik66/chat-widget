@@ -25,6 +25,7 @@ const ChatBubble: React.FC<ChatBubbleProps> = ({
         flex items-center justify-center
       `}
       onClick={onClick}
+      data-testid="button-chat-bubble"
     >
       <div className="relative w-6 h-6">
         <MessageCircle

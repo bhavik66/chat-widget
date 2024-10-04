@@ -65,6 +65,7 @@ const Message: React.FC<MessageProps> = ({
                     size="icon"
                     onClick={handleEdit}
                     className="h-6 w-6"
+                    data-testid="button-edit"
                   >
                     <Edit className="h-4 w-4 text-gray-400" />
                   </Button>
@@ -73,6 +74,7 @@ const Message: React.FC<MessageProps> = ({
                     size="icon"
                     onClick={handleDelete}
                     className="h-6 w-6"
+                    data-testid="button-delete"
                   >
                     <Trash2 className="h-4 w-4 text-gray-400" />
                   </Button>
