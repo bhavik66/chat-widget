@@ -1,0 +1,20 @@
+{
+    "compilerOptions": {
+      "jsx": "react-jsx",  // Enables JSX support
+      "esModuleInterop": true, // Fixes module import issues
+      "target": "ES2020",
+      "module": "ESNext",
+      "lib": ["DOM", "ES2020"],
+      "skipLibCheck": true,
+      "strict": true,
+      "moduleResolution": "node",
+      "baseUrl": ".",
+      "paths": {
+        "@/*": ["./src/*"]
+      },
+      "isolatedModules": true,
+      "noEmit": true,
+    },
+    "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.test.tsx"]
+}
+  
