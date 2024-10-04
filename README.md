@@ -16,7 +16,7 @@ A customizable real-time chat widget built with React and TypeScript, providing 
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/yourusername/chat-widget.git
+   git clone https://github.com/bhavik66/chat-widget
    cd chat-widget
    ```
 
@@ -71,6 +71,8 @@ In the project directory, you can run the following commands:
 - **`npm run build`**: Builds the app for production into the `dist` folder, optimizing for performance.
 - **`npm run preview`**: Previews the production build locally.
 - **`npm run lint`**: Runs ESLint to analyze and fix code for potential issues or style inconsistencies.
+- **`npm run test`** Run test cases
+- **`npm run test:coverage`** Run test cases with coverage
 
 ## Dependencies
 
