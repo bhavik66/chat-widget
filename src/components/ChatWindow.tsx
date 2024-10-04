@@ -121,7 +121,7 @@ const ChatWindow: React.FC<ChatWindowProps> = ({
       }`}
     >
       {/* Header */}
-      <div className="flex justify-between items-center p-3">
+      <div className="flex justify-between items-center p-3 pb-0">
         <div className="flex items-center space-x-2">
           <Button variant="ghost" size="icon" onClick={toggleFullscreen}>
             {isFullscreen ? (
@@ -152,6 +152,15 @@ const ChatWindow: React.FC<ChatWindowProps> = ({
           <span className="sr-only">Close chat</span>
         </Button>
       </div>
+      <div className="relative">
+        <div
+          className="absolute top-0 left-0 right-0 h-12 pointer-events-none"
+          style={{
+            background:
+              'linear-gradient(to bottom, rgba(255,255,255,1) 0%, rgba(255,255,255,0.8) 30%, rgba(255,255,255,0.4) 65%, rgba(255,255,255,0) 100%)',
+          }}
+        />
+      </div>
 
       {conversationError && (
         <div className="text-red-500 text-center">{conversationError}</div>
@@ -168,7 +177,26 @@ const ChatWindow: React.FC<ChatWindowProps> = ({
           dataLength={messages.length}
           next={loadMoreMessages}
           hasMore={hasMore}
-          loader={<p className="text-center m-5">⏳&nbsp;Loading...</p>}
+          endMessage={
+            <div className="space-y-2 mb-10">
+              <div className="flex justify-center">
+                <Avatar className="w-16 h-16">
+                  <AvatarImage
+                    alt="Ava"
+                    src="/placeholder.svg?height=64&width=64"
+                  />
+                  <AvatarFallback>Ava</AvatarFallback>
+                </Avatar>
+              </div>
+              <div className="text-center space-y-1">
+                <h2 className="text-xl font-semibold">Hey👋, I'm Ava</h2>
+                <p className="text-sm text-gray-500">
+                  Ask me anything or pick a place to start
+                </p>
+              </div>
+            </div>
+          }
+          loader={<p className="text-center m-5">Loading...</p>}
           scrollableTarget="scrollableDiv"
           inverse={true}
           className="flex flex-col-reverse overflow-visible"
@@ -180,7 +208,7 @@ const ChatWindow: React.FC<ChatWindowProps> = ({
                 sender={'ai'}
                 content={''}
                 avatar={''}
-                actions={[]}
+                actions={{}}
                 onEdit={() => {}}
                 onDelete={() => {}}
                 isTyping
