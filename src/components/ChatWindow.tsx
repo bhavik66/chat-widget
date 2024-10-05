@@ -121,8 +121,12 @@ const ChatWindow: React.FC<ChatWindowProps> = ({
       }`}
     >
       {/* Header */}
-      <div className="flex justify-between items-center p-3 pb-0">
-        <div className="flex items-center space-x-2">
+      <div
+        className={`flex ${isMobileScreen() ? 'justify-end' : 'justify-between'} items-center p-3 pb-0`}
+      >
+        <div
+          className={`flex items-center space-x-2 ${isMobileScreen() && 'hidden'}`}
+        >
           <Button
             variant="ghost"
             size="icon"
@@ -246,7 +250,7 @@ const ChatWindow: React.FC<ChatWindowProps> = ({
       <div className="border-t px-4 pt-4 flex items-center space-x-2">
         <Avatar className="w-8 h-8">
           <AvatarImage alt="User" src="/placeholder.svg?height=24&width=24" />
-          <AvatarFallback>U</AvatarFallback>
+          <AvatarFallback>B</AvatarFallback>
         </Avatar>
         <div className="flex-grow relative">
           <Textarea
