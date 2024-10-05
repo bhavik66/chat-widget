@@ -43,8 +43,12 @@ const useConversation = (): UseConversationReturn => {
       let conversation: Conversation | null = null;
 
       if (conversationId) {
-        conversation = await getConversation(conversationId);
-        if (!conversation) conversation = await createConversation(userId);
+        try {
+          conversation = await getConversation(conversationId);
+        } catch (err) {
+          console.error('Error fetching conversation:', err);
+          conversation = await createConversation(userId);
+        }
       } else {
         conversation = await createConversation(userId);
       }
