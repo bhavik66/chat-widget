@@ -145,6 +145,7 @@ const useMessages = (
       // Handle new incoming message
       dispatchMessages({ type: 'ADD_MESSAGE', payload: message });
       setTotal((prevTotal) => prevTotal + 1);
+      setIsAiTyping(false);
     });
     webSocketService.onTyping((event) => {
       setIsAiTyping(event.isTyping);
