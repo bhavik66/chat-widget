@@ -185,7 +185,6 @@ describe('ChatWindow Component', () => {
         id: 'msg-1',
         sender: 'user',
         content: 'Message to delete',
-        avatar: '',
         actions: {},
       },
     ];

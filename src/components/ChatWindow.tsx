@@ -197,12 +197,8 @@ const ChatWindow: React.FC<ChatWindowProps> = ({
           endMessage={
             <div className="space-y-2 mb-10">
               <div className="flex justify-center">
-                <Avatar className="w-16 h-16">
-                  <AvatarImage
-                    alt="Ava"
-                    src="/placeholder.svg?height=64&width=64"
-                  />
-                  <AvatarFallback>Ava</AvatarFallback>
+                <Avatar className="w-16 h-16 bg-purple-500 border-2 border-solid">
+                  <AvatarImage alt="Ava" src="/img/ava.webp" />
                 </Avatar>
               </div>
               <div className="text-center space-y-1">
@@ -224,7 +220,6 @@ const ChatWindow: React.FC<ChatWindowProps> = ({
                 id={'ai-typing'}
                 sender={'ai'}
                 content={''}
-                avatar={''}
                 actions={{}}
                 onEdit={() => {}}
                 onDelete={() => {}}
@@ -238,7 +233,6 @@ const ChatWindow: React.FC<ChatWindowProps> = ({
                 id={msg.id}
                 sender={msg.sender}
                 content={msg.content}
-                avatar={msg.avatar}
                 actions={msg.actions}
                 onEdit={handleEditMessage}
                 onDelete={handleDeleteMessage}

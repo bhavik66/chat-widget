@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { Avatar, AvatarImage } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
 import { Edit, Trash2 } from 'lucide-react';
 import { MessageType } from '@/types/chat';
@@ -24,7 +24,6 @@ const Message: React.FC<MessageProps> = ({
   id,
   sender,
   content,
-  avatar,
   actions,
   isTyping,
   onEdit,
@@ -49,9 +48,8 @@ const Message: React.FC<MessageProps> = ({
       onMouseLeave={() => setIsHovered(false)}
     >
       {isAI && (
-        <Avatar className="w-10 h-10">
-          <AvatarImage alt="AI" src={avatar} />
-          <AvatarFallback>AI</AvatarFallback>
+        <Avatar className="w-10 h-10 bg-purple-500 border-solid border-2">
+          <AvatarImage alt="AI" src={'/img/ava.webp'} />
         </Avatar>
       )}
       <div className={`space-y-2 ${isAI ? '' : 'flex flex-col items-end'}`}>
