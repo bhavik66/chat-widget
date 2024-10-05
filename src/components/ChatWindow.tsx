@@ -184,10 +184,12 @@ const ChatWindow: React.FC<ChatWindowProps> = ({
       </div>
 
       {conversationError && (
-        <div className="text-red-500 text-center">{conversationError}</div>
+        <div className="text-red-500 text-center mt-12">
+          {conversationError}
+        </div>
       )}
       {messagesError && (
-        <div className="text-red-500 text-center">{messagesError}</div>
+        <div className="text-red-500 text-center mt-12">{messagesError}</div>
       )}
 
       <div
